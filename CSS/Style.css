@@ -2,3 +2,23 @@
     display: flex;
     justify-content: center;
 }
+.whiteBG{
+    background-color: white;
+}
+.onyxBG{
+    background-color: #353839;
+}
+.orangeText{
+    color: orangered;
+}
+.titleSpecs{
+    font-size: 40px;
+    font-family: 'Anton', sans-serif;
+}
+.bodyText{
+    font-size: 20px;
+    font-family: 'Anton', sans-serif;
+}
+/* .btnSpecs{
+
+} */
