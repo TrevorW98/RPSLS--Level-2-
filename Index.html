@@ -12,62 +12,56 @@
     <link rel="stylesheet" href="./CSS/Style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <title>Rock Paper Scissors Lizard Spock</title>
+    <title>RPSLS Arena</title>
 </head>
 
 <body class="onyxBG">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 center">
-               <p class="titleSpecs orangeText">RPSLS MONSTER</p>
+                <p class="titleSpecs orangeText">Welcome to the Arena</p>
             </div>
         </div>
     </div>
     <div class="container mt-2">
         <div class="row">
-            <div class="col-12">
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button titleSpecs" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                The Rules
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body whiteBG bodyText">
-                                <strong>The rules of the game are simple. Rock beats Lizard and Scissors, Scissors beats Paper and Lizard,
-                                    Spock beats Rock and Scissors, Lizard beats Spock and Paper, and Paper beats Rock and Spock. Got it? Good, it's time to play.
-                                </strong>
-                            </div>
-                        </div>
+            <div class="col-12 center">
+                <div class="card" style="width: 35rem;">
+                    <img src="./pics/rockpaperscissorslizardspock_newthumb.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-title titleSpecs center">The Rules</p>
+                        <hr>
+                        <p class="card-text bodyText text-center">The rules of the game are simple. Rock beats Lizard and Scissors, Scissors beats
+                            Paper and Lizard,
+                            Spock beats Rock and Scissors, Lizard beats Spock and Paper, and Paper beats Rock
+                            and Spock. You can either play the computer or a fellow human. Got it? Good, it's time to play.</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="versionBtns" class="row">
+
+        </div>
         <div class="row mt-3 center">
             <div id="rockHere" class="col-2">
-                
+
             </div>
             <div id="paperHere" class="col-2">
-                
+
             </div>
             <div id="scissorsHere" class="col-2">
-                
+
             </div>
             <div id="lizardHere" class="col-2">
-                
+
             </div>
             <div id="spockHere" class="col-2">
-                
+
             </div>
         </div>
         <div class="row center mt-5">
-            <div class="col-6">
-                <div class="alert alert-dark" role="alert" id="resultDisplay">
-                   result is displayed here
-                  </div>
+            <div id="resultsHere" class="col-6">
+    
             </div>
         </div>
 

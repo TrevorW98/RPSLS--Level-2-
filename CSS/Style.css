@@ -12,13 +12,20 @@
     color: orangered;
 }
 .titleSpecs{
-    font-size: 40px;
+    font-size: 60px;
     font-family: 'Anton', sans-serif;
 }
 .bodyText{
     font-size: 20px;
     font-family: 'Anton', sans-serif;
 }
-/* .btnSpecs{
-
-} */
+.btnSpecs{
+    margin-top: 45px;
+    border-style: hidden;
+    border-radius: 2px;
+    color: black;
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Anton', sans-serif;
+    
+}
