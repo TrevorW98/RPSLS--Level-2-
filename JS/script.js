@@ -19,9 +19,8 @@ let version;
 let madeChoices = [];
 let infoHere = document.getElementById("infoHere");
 let round = 0;
-let round1 = 1;
-let round3 = 3;
-let round7 = 7;
+let roundChoice = 0;
+let finalSceneHere = document.getElementById("finalSceneHere");
 //These are two ways to call the API for the cpu's decision 
 //this style is preferable
 //I had just a fetch here but i realized i can put this in a function and call it whenever I need
@@ -94,23 +93,28 @@ getComputerDecision();
 function createRockBtnCPU() {
     let rockBtn = document.createElement("button");
     rockBtn.classList.add("whiteBG", "btnSpecs");
+    rockBtn.id = "rockBtn";
     rockBtn.innerText = "Rock";
     rockBtn.addEventListener("click", function () {
         playerDecision = "Rock";
         if (computerPlay === playerDecision) {
+            round++;
             resultDisplay.innerText = "This round is a tie"
             madeChoices.push("Tie game!")
             winListMaker();
         } else if (computerPlay === "Scissors" || computerPlay === "Lizard") {
+            round++;
             resultDisplay.innerText = "You won this round!"
             madeChoices.push("Player")
             winListMaker();
         } else {
+            round++;
             resultDisplay.innerText = "You lost this round!"
             madeChoices.push("CPU")
             winListMaker();
         }
         getComputerDecision();
+        roundCompare2();
     });
     rockHere.appendChild(rockBtn);
     infoHere
@@ -119,22 +123,27 @@ function createPaperBtnCPU() {
     let paperBtn = document.createElement("button");
     paperBtn.classList.add("whiteBG", "btnSpecs");
     paperBtn.innerText = "Paper";
+    paperBtn.id = "paperBtn";
     paperBtn.addEventListener("click", function () {
         playerDecision = "Paper";
         if (computerPlay === playerDecision) {
             resultDisplay.innerText = "This round is a tie"
             madeChoices.push("Tie game!")
             winListMaker();
+            round++;
         } else if (computerPlay === "Rock" || computerPlay === "Spock") {
             resultDisplay.innerText = "You won this round!"
             madeChoices.push("Player");
             winListMaker();
+            round++;
         } else {
             resultDisplay.innerText = "You lost this round!"
             madeChoices.push("CPU")
             winListMaker();
+            round++;
         }
         getComputerDecision();
+        roundCompare2();
     });
     paperHere.appendChild(paperBtn);
 }
@@ -143,28 +152,34 @@ function createScissorsBtnCPU() {
     console.log(scissorsBtn);
     scissorsBtn.classList.add("whiteBG", "btnSpecs");
     scissorsBtn.innerText = "Scissors";
+    scissorsBtn.id = "scissorsBtn";
     scissorsBtn.addEventListener("click", function () {
         playerDecision = "Scissors";
         if (computerPlay === playerDecision) {
             resultDisplay.innerText = "This round is a tie"
             madeChoices.push("Tie game!")
             winListMaker();
+            round++;
         } else if (computerPlay === "Paper" || computerPlay === "Lizard") {
             resultDisplay.innerText = "You won this round!"
             madeChoices.push("Player")
             winListMaker();
+            round++;
         } else {
             resultDisplay.innerText = "You lost this round!"
             madeChoices.push("CPU")
             winListMaker();
+            round++;
         }
         getComputerDecision();
+        roundCompare2();
     });
     scissorsHere.appendChild(scissorsBtn);
 }
 function createLizardBtnCPU() {
     let lizardBtn = document.createElement("button");
     lizardBtn.classList.add("whiteBG", "btnSpecs");
+    lizardBtn.id = "lizardBtn";
     lizardBtn.innerText = "Lizard";
     lizardBtn.addEventListener("click", function () {
         playerDecision = "Lizard";
@@ -172,16 +187,20 @@ function createLizardBtnCPU() {
             resultDisplay.innerText = "This round is a tie"
             madeChoices.push("Tie game!")
             winListMaker();
+            round++;
         } else if (computerPlay === "Paper" || computerPlay === "Spock") {
             resultDisplay.innerText = "You won this round!"
             madeChoices.push("Player")
             winListMaker();
+            round++;
         } else {
             resultDisplay.innerText = "You lost this round!"
             madeChoices.push("CPU")
             winListMaker();
+            round++;
         }
         getComputerDecision();
+        roundCompare2();
     });
     lizardHere.appendChild(lizardBtn);
 }
@@ -189,22 +208,29 @@ function createSpockBtnCPU() {
     let spockBtn = document.createElement("button");
     spockBtn.classList.add("whiteBG", "btnSpecs");
     spockBtn.innerText = "Spock";
+    spockBtn.id = "spockBtn";
     spockBtn.addEventListener("click", function () {
         playerDecision = "Spock";
         if (computerPlay === playerDecision) {
             resultDisplay.innerText = "This round is a tie"
             madeChoices.push("Tie game!")
             winListMaker();
+            round++;
         } else if (computerPlay === "Scissors" || computerPlay === "Rock") {
             resultDisplay.innerText = "You won this round!"
             madeChoices.push("Player")
             winListMaker();
+            round++;
         } else {
+            roundCompare();
             resultDisplay.innerText = "You lost this round!"
             madeChoices.push("CPU")
             winListMaker();
+            round++;
         }
         getComputerDecision();
+        roundCompare2();
+       
     });
     spockHere.appendChild(spockBtn);
 }
@@ -215,17 +241,20 @@ function createRockBtnPVP() {
     let rockBtnPVP = document.createElement("button");
     rockBtnPVP.classList.add("whiteBG", "btnSpecs");
     rockBtnPVP.innerText = "Rock";
+    rockBtnPVP.id = "rockBtnPVP";
     rockBtnPVP.addEventListener("click", function () {
         if(playerChoiceCounter == 0){
             playerOne = "Rock";
             playerChoiceCounter++;
             infoText();
         } else{
+            round++;
             infoText2()
             playerTwo = "Rock";
             comparePVP();
             playerChoiceCounter = 0;
         }
+        roundCompare1();
     });
     rockHere.appendChild(rockBtnPVP);
 }
@@ -233,17 +262,20 @@ function createPaperBtnPVP() {
     let paperBtnPVP = document.createElement("button");
     paperBtnPVP.classList.add("whiteBG", "btnSpecs");
     paperBtnPVP.innerText = "Paper";
+    paperBtnPVP.id = "paperBtnPVP";
     paperBtnPVP.addEventListener("click", function () {
         if(playerChoiceCounter == 0){
             playerOne = "Paper";
             playerChoiceCounter++;
             infoText();
         } else{
+            round++;
             infoText2()
             playerTwo = "Paper";
             comparePVP();
             playerChoiceCounter = 0;
         }
+        roundCompare1();
     });
     paperHere.appendChild(paperBtnPVP);
 }
@@ -251,18 +283,20 @@ function createScissorsBtnPVP() {
     let scissorsBtnPVP = document.createElement("button");
     scissorsBtnPVP.classList.add("whiteBG", "btnSpecs");
     scissorsBtnPVP.innerText = "Scissors";
+    scissorsBtnPVP.id = "scissorsBtnPVP";
     scissorsBtnPVP.addEventListener("click", function () {
         if(playerChoiceCounter == 0){
             playerOne = "Scissors";
             playerChoiceCounter++;
             infoText();
         } else{
+            round++;
             infoText2()
             playerTwo = "Scissors";
             comparePVP();
             playerChoiceCounter = 0;
         }
-    
+        roundCompare1();
     });
     scissorsHere.appendChild(scissorsBtnPVP);
 }
@@ -270,18 +304,21 @@ function createLizardBtnPVP() {
     let lizardBtnPVP = document.createElement("button");
     lizardBtnPVP.classList.add("whiteBG", "btnSpecs");
     lizardBtnPVP.innerText = "Lizard";
+    lizardBtnPVP.id = "lizardBtnPVP";
     lizardBtnPVP.addEventListener("click", function () {
         if(playerChoiceCounter == 0){
             playerOne = "Lizard";
             playerChoiceCounter++;
             infoText();
         } else{
+            round++;
             infoText2()
             playerTwo = "Lizard";
             comparePVP();
             playerChoiceCounter = 0;
         }
       
+        roundCompare1();
     });
     lizardHere.appendChild(lizardBtnPVP);
 }
@@ -289,18 +326,21 @@ function createSpockBtnPVP() {
     let spockBtnPVP = document.createElement("button");
     spockBtnPVP.classList.add("whiteBG", "btnSpecs");
     spockBtnPVP.innerText = "Spock";
+    spockBtnPVP.id = "spockBtnPVP"
     spockBtnPVP.addEventListener("click", function () {
         if(playerChoiceCounter == 0){
             playerOne = "Spock";
             playerChoiceCounter++;
             infoText();
         } else{
-            infoText2()
+            round++;
+            infoText2();
             playerTwo = "Spock";
             comparePVP();
             playerChoiceCounter = 0;
         }
-     
+        
+        roundCompare1();
     });
     spockHere.appendChild(spockBtnPVP);
 }
@@ -308,24 +348,31 @@ function comparePVP(){
     if(playerOne == playerTwo){
         resultDisplay.innerText = "This round is a tie!"
         madeChoices.push("Tie game!")
+        
     } else if(playerOne === "Rock" && (playerTwo === "Paper" || playerTwo === "Spock")){
         resultDisplay.innerText = "Player 2 wins this round!";
         madeChoices.push("Player 2")
+        
     } else if(playerOne === "Scissors" && (playerTwo === "Rock" || playerTwo === "Spock")){
         resultDisplay.innerText = "Player 2 wins this round!";
         madeChoices.push("Player 2")
+        
     } else if(playerOne === "Spock" && (playerTwo === "Lizard" || playerTwo === "Paper")){
         resultDisplay.innerText = "Player 2 wins this round!";
         madeChoices.push("Player 2")
+       
     } else if(playerOne === "Lizard" && (playerTwo === "Rock" || playerTwo === "Scissors")){
         resultDisplay.innerText = "Player 2 wins this round!";
         madeChoices.push("Player 2")
+        
     } else if(playerOne === "Paper" && (playerTwo === "Lizard" || playerTwo === "Scissors")){
         resultDisplay.innerText = "Player 2 wins this round!";
         madeChoices.push("Player 2")
+        
     } else{
         resultDisplay.innerText = "Player 1 wins this round!"
         madeChoices.push("Player 1")
+        
     }
     winListMaker();
 }
@@ -378,21 +425,21 @@ function roundSystem(){
     round3Btn.innerText = "Best of 3";
     round7Btn.innerText = "Best of 7";
     round1Btn.addEventListener("click",function(){
-        round = 1;
+        roundChoice = 1;
         round1Btn.remove();
         round3Btn.remove();
         round7Btn.remove();
         onLoad();
     })
     round3Btn.addEventListener("click",function(){
-        round = 3;
+        roundChoice = 3;
         round1Btn.remove();
         round3Btn.remove();
         round7Btn.remove();
         onLoad();
     })
     round7Btn.addEventListener("click",function(){
-        round = 7;
+        roundChoice = 7;
         round1Btn.remove();
         round3Btn.remove();
         round7Btn.remove();
@@ -405,12 +452,73 @@ function roundSystem(){
     versionBtns.appendChild(column2);
     versionBtns.appendChild(column3);
 }
-function roundCompare(){
-    if(round == round1){
+function roundCompare1(){
+    if(round == 1 && roundChoice == 1){
+        rockBtnPVP.remove();
+        paperBtnPVP.remove();
+        scissorsBtnPVP.remove();
+        lizardBtnPVP.remove();
+        spockBtnPVP.remove();
+        createFinalScene();
+    } else if(round == 3 && roundChoice == 3){
+        rockBtnPVP.remove();
+        paperBtnPVP.remove();
+        scissorsBtnPVP.remove();
+        lizardBtnPVP.remove();
+        spockBtnPVP.remove();
+        createFinalScene();
 
-    } else if(round == round3){
-
-    } else if(round == round7){
-
+    } else if(round  == 7 && roundChoice == 7){
+        rockBtnPVP.remove();
+        paperBtnPVP.remove();
+        scissorsBtnPVP.remove();
+        lizardBtnPVP.remove();
+        spockBtnPVP.remove();
+        createFinalScene();
     }
+}
+function roundCompare2(){
+    if(round == 1 && roundChoice == 1){
+        rockBtn.remove();
+        paperBtn.remove();
+        scissorsBtn.remove();
+        lizardBtn.remove();
+        spockBtn.remove();
+        createFinalScene();
+    } else if(round == 3 && roundChoice == 3){
+        rockBtn.remove();
+        paperBtn.remove();
+        scissorsBtn.remove();
+        lizardBtn.remove();
+        spockBtn.remove();
+        createFinalScene();
+
+    } else if(round  == 7 && roundChoice == 7){
+        rockBtn.remove();
+        paperBtn.remove();
+        scissorsBtn.remove();
+        lizardBtn.remove();
+        spockBtn.remove();
+        createFinalScene();
+    }
+}
+function createFinalScene(){
+    let card = document.createElement("div");
+    let cardBody = document.createElement("div");
+    let finalResult = document.createElement("p");
+    let restart = document.createElement("button");
+
+    card.classList.add("card", "center");
+    cardBody.classList.add("card-body");
+    finalResult.classList.add("bodyText", "text-center");
+    restart.classList.add("btnSpecs");
+    restart.innerText = "New Game"
+    finalResult.innerText = "Would you like to play again?";
+    cardBody.appendChild(finalResult);
+    cardBody.appendChild(restart);
+    card.appendChild(cardBody);
+    finalSceneHere.appendChild(card);
+    restart.addEventListener("click",function(){
+        location.reload();
+    })
 }
