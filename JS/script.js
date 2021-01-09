@@ -2,7 +2,7 @@
 
 //NEEDS TO BE DONE: BE ABLE TO SELECT 1/3/7 ROUNDS
 // BE CREATIVE IN HOW YOU MAKE THE 2 PLAYER WORK
-
+let winList = document.getElementById("winList");
 let versionBtns = document.getElementById("versionBtns");
 let rockHere = document.getElementById("rockHere")
 let paperHere = document.getElementById("paperHere");
@@ -16,6 +16,7 @@ let playerOne = "";
 let playerTwo = "";
 let computerPlay;
 let version;
+let madeChoices = [];
 //These are two ways to call the API for the cpu's decision 
 //this style is preferable
 //I had just a fetch here but i realized i can put this in a function and call it whenever I need
@@ -258,7 +259,6 @@ function createSpockBtnPVP() {
             console.log(playerOne + "player 1")
             playerChoiceCounter++;
         } else{
-            resultDisplay.innerText = "Player 2, choose your stance"
             playerTwo = "Spock";
             console.log(playerTwo + "player2")
             playerChoiceCounter = 0;
@@ -271,18 +271,39 @@ function createSpockBtnPVP() {
 function comparePVP(){
     if(playerOne == playerTwo){
         resultDisplay.innerText = "This round is a tie!"
+        madeChoices.push("Tie game!")
     } else if(playerOne === "Rock" && (playerTwo === "Paper" || playerTwo === "Spock")){
         resultDisplay.innerText = "Player 2 wins this round!";
+        madeChoices.push("Player 2")
     } else if(playerOne === "Scissors" && (playerTwo === "Rock" || playerTwo === "Spock")){
         resultDisplay.innerText = "Player 2 wins this round!";
+        madeChoices.push("Player 2")
     } else if(playerOne === "Spock" && (playerTwo === "Lizard" || playerTwo === "Paper")){
         resultDisplay.innerText = "Player 2 wins this round!";
+        madeChoices.push("Player 2")
     } else if(playerOne === "Lizard" && (playerTwo === "Rock" || playerTwo === "Scissors")){
         resultDisplay.innerText = "Player 2 wins this round!";
+        madeChoices.push("Player 2")
     } else if(playerOne === "Paper" && (playerTwo === "Lizard" || playerTwo === "Scissors")){
         resultDisplay.innerText = "Player 2 wins this round!";
+        madeChoices.push("Player 2")
     } else{
         resultDisplay.innerText = "Player 1 wins this round!"
+        madeChoices.push("Player 1")
+    }
+    winListMaker();
+}
+
+function winListMaker(){
+    winList.innerHTML = "";
+    for(let i = 0;i<madeChoices.length;i++){
+        let li = document.createElement("li");
+        let p = document.createElement("p");
+        li.classList.add("list-group-item");
+        p.classList.add("bodyText");
+        p.innerText = madeChoices[i];
+        li.appendChild(p);
+        winList.appendChild(li);
     }
 }
 
@@ -292,4 +313,5 @@ function createResults(){
     resultDisplayBox.classList.add("alert", "alert-dark", "text-center", "mb-5","bodyText");
     resultDisplayBox.innerText = "Player 1, choose your stance";
     resultsHere.appendChild(resultDisplayBox);
+
 }
