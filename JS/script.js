@@ -17,6 +17,11 @@ let playerTwo = "";
 let computerPlay;
 let version;
 let madeChoices = [];
+let infoHere = document.getElementById("infoHere");
+let roundChoice = 0;
+let round1 = 1;
+let round3 = 3;
+let round7 = 7;
 //These are two ways to call the API for the cpu's decision 
 //this style is preferable
 //I had just a fetch here but i realized i can put this in a function and call it whenever I need
@@ -81,7 +86,7 @@ function onLoad(){
 }
 
 //I call this once right out to have a decision ready for the first round
-onLoad();
+roundSystem();
 getComputerDecision();
 
 //this will create the buttons needed for the game
@@ -102,6 +107,7 @@ function createRockBtnCPU() {
         getComputerDecision();
     });
     rockHere.appendChild(rockBtn);
+    infoHere
 }
 function createPaperBtnCPU() {
     let paperBtn = document.createElement("button");
@@ -182,13 +188,13 @@ function createRockBtnPVP() {
     rockBtnPVP.addEventListener("click", function () {
         if(playerChoiceCounter == 0){
             playerOne = "Rock";
-            console.log(playerOne + "player 1")
             playerChoiceCounter++;
+            infoText();
         } else{
+            infoText2()
             playerTwo = "Rock";
-            console.log(playerTwo + "player2")
-            playerChoiceCounter = 0;
             comparePVP();
+            playerChoiceCounter = 0;
         }
     });
     rockHere.appendChild(rockBtnPVP);
@@ -200,13 +206,13 @@ function createPaperBtnPVP() {
     paperBtnPVP.addEventListener("click", function () {
         if(playerChoiceCounter == 0){
             playerOne = "Paper";
-            console.log(playerOne + "player 1")
             playerChoiceCounter++;
+            infoText();
         } else{
+            infoText2()
             playerTwo = "Paper";
-            console.log(playerTwo + "player2")
-            playerChoiceCounter = 0;
             comparePVP();
+            playerChoiceCounter = 0;
         }
     });
     paperHere.appendChild(paperBtnPVP);
@@ -218,13 +224,13 @@ function createScissorsBtnPVP() {
     scissorsBtnPVP.addEventListener("click", function () {
         if(playerChoiceCounter == 0){
             playerOne = "Scissors";
-            console.log(playerOne + "player 1")
             playerChoiceCounter++;
+            infoText();
         } else{
+            infoText2()
             playerTwo = "Scissors";
-            console.log(playerTwo + "player2")
-            playerChoiceCounter = 0;
             comparePVP();
+            playerChoiceCounter = 0;
         }
     
     });
@@ -237,13 +243,13 @@ function createLizardBtnPVP() {
     lizardBtnPVP.addEventListener("click", function () {
         if(playerChoiceCounter == 0){
             playerOne = "Lizard";
-            console.log(playerOne + "player 1")
             playerChoiceCounter++;
+            infoText();
         } else{
+            infoText2()
             playerTwo = "Lizard";
-            console.log(playerTwo + "player2")
-            playerChoiceCounter = 0;
             comparePVP();
+            playerChoiceCounter = 0;
         }
       
     });
@@ -256,13 +262,13 @@ function createSpockBtnPVP() {
     spockBtnPVP.addEventListener("click", function () {
         if(playerChoiceCounter == 0){
             playerOne = "Spock";
-            console.log(playerOne + "player 1")
             playerChoiceCounter++;
+            infoText();
         } else{
+            infoText2()
             playerTwo = "Spock";
-            console.log(playerTwo + "player2")
-            playerChoiceCounter = 0;
             comparePVP();
+            playerChoiceCounter = 0;
         }
      
     });
@@ -299,7 +305,7 @@ function winListMaker(){
     for(let i = 0;i<madeChoices.length;i++){
         let li = document.createElement("li");
         let p = document.createElement("p");
-        li.classList.add("list-group-item");
+        li.classList.add("list-group-item", "center");
         p.classList.add("bodyText");
         p.innerText = madeChoices[i];
         li.appendChild(p);
@@ -310,8 +316,62 @@ function winListMaker(){
 function createResults(){
     let resultDisplayBox = document.createElement("div");
     resultDisplayBox.id = ("resultDisplay");
-    resultDisplayBox.classList.add("alert", "alert-dark", "text-center", "mb-5","bodyText");
-    resultDisplayBox.innerText = "Player 1, choose your stance";
+    resultDisplayBox.classList.add("alert", "alert-dark", "text-center", "mb-5","body2Text","infoSpecs", "marginT");
     resultsHere.appendChild(resultDisplayBox);
-
+    resultDisplayBox.innerText = "Results"
+    let info = document.createElement("div");
+    info.id = "info";
+    info.classList.add("recentWins", "text-center");
+    info.innerText = "Player 1, Choose your stance"
+    infoHere.appendChild(info);
+}
+function infoText(){
+    info.innerText = "Player 2, Choose your stance" 
+}
+function infoText2(){
+    info.innerText = "Player 1, Choose your stance"
+}
+function roundSystem(){
+    let round1Btn = document.createElement("button");
+    let round3Btn = document.createElement("button");
+    let round7Btn = document.createElement("button");
+    let column1 = document.createElement("div");
+    let column2 = document.createElement("div");
+    let column3 = document.createElement("div");
+    column1.classList.add("col-4", "center");
+    column2.classList.add("col-4","center");
+    column3.classList.add("col-4","center");
+    round1Btn.classList.add("btnSpecs");
+    round3Btn.classList.add("btnSpecs");
+    round7Btn.classList.add("btnSpecs");
+    round1Btn.innerText = "Single Round";
+    round3Btn.innerText = "Best of 3";
+    round7Btn.innerText = "Best of 7";
+    round1Btn.addEventListener("click",function(){
+        roundChoice = 1;
+        round1Btn.remove();
+        round3Btn.remove();
+        round7Btn.remove();
+        onLoad();
+    })
+    round3Btn.addEventListener("click",function(){
+        roundChoice = 3;
+        round1Btn.remove();
+        round3Btn.remove();
+        round7Btn.remove();
+        onLoad();
+    })
+    round7Btn.addEventListener("click",function(){
+        roundChoice = 7;
+        round1Btn.remove();
+        round3Btn.remove();
+        round7Btn.remove();
+        onLoad();
+    })
+    column1.appendChild(round1Btn);
+    column2.appendChild(round3Btn);
+    column3.appendChild(round7Btn);
+    versionBtns.appendChild(column1);
+    versionBtns.appendChild(column2);
+    versionBtns.appendChild(column3);
 }

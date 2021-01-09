@@ -3,29 +3,58 @@
     justify-content: center;
 }
 .whiteBG{
-    background-color: white;
+    background-color: #F2F5FF;
 }
 .onyxBG{
-    background-color: #353839;
+    background-color: #232C33;
 }
 .orangeText{
-    color: orangered;
+    color: #FC5130;
 }
 .titleSpecs{
+    font-size: 80px;
+    font-family: 'Anton', sans-serif;
+}
+.title2Specs{
     font-size: 60px;
     font-family: 'Anton', sans-serif;
 }
 .bodyText{
     font-size: 20px;
     font-family: 'Anton', sans-serif;
+    color: black;
 }
 .btnSpecs{
     margin-top: 45px;
-    border-style: hidden;
-    border-radius: 2px;
+    border: none;
+    border-radius: 8px;
     color: black;
     text-align: center;
     font-size: 35px;
     font-family: 'Anton', sans-serif;
-    
+    box-shadow: 10px 10px 5px grey;
+}
+.black{
+    color: black;
+}
+.spacing{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.noPad{
+    padding: 0px;
+}
+.marginT{
+    margin-top: 60px;
+}
+.body2Text{
+    font-size: 30px;
+    font-family: 'Anton', sans-serif;
+    color: black;
+}
+.recentWins{
+    color: #ff5331;
+    font-size: 40px;
+    font-family: 'Anton', sans-serif;
 }

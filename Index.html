@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./CSS/Style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/wickedcss.min.css">
     <title>RPSLS Arena</title>
 </head>
 
@@ -19,17 +20,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 center">
-                <p class="titleSpecs orangeText">Welcome to the Arena</p>
+                <p class="titleSpecs orangeText slideDown">Welcome to the Arena</p>
             </div>
         </div>
     </div>
     <div class="container mt-2">
+        <div class="row center">
+            <div class="col-10">
+                <img src="./pics/rockpaperscissorslizardspock_newthumb.png" class="card-img-top pulse" alt="...">
+            </div>
+        </div>
         <div class="row">
             <div class="col-12 center">
                 <div class="card" style="width: 35rem;">
-                    <img src="./pics/rockpaperscissorslizardspock_newthumb.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-title titleSpecs center">The Rules</p>
+                    <div class="card-body mt-3">
+                        <p class="card-title title2Specs center black">The Rules</p>
                         <hr>
                         <p class="card-text bodyText text-center">The rules of the game are simple. Rock beats Lizard
                             and Scissors, Scissors beats
@@ -44,7 +49,12 @@
         <div id="versionBtns" class="row mt-5">
 
         </div>
-        <div class="row mt-3 center">
+        <div class="row center mt-5">
+            <div id="infoHere" class="col-4">
+
+            </div>
+        </div>
+        <div class="row mt-3 spacing">
             <div id="rockHere" class="col-2">
 
             </div>
@@ -61,27 +71,34 @@
 
             </div>
         </div>
-        <div class="row center mt-5">
-            <div id="resultsHere" class="col-6">
-
+        <div class="row center marginT">
+            <div id="resultsHere" class="col-4">
+                
+            </div>
+        </div>
+        
+        <div class="row center">
+            <div class="col-4">
+                <p class="recentWins text-center marginT" role="alert">
+                    Recent Wins
+                </p>
             </div>
         </div>
         <div class="row center">
-            <div class="col-8 center">
-                <span class="badge bg-secondary bodyText">Recent Wins List</span>
-                <div class="alert alert-light bodyText" role="alert">
-                    Recent Wins List
-                </div>
-            </div>
-        </div>
-        <div class="row center">
-            <div class="col-8 whiteBG">
-                <ul id="winList" class="list-group list-group-flush">
-
-                </ul>
+            <div class="col-4">
+                <ol id="winList" class="list-group list-group-flush whiteBG">
+            
+                </ol>
             </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
