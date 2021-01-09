@@ -18,7 +18,7 @@ let computerPlay;
 let version;
 let madeChoices = [];
 let infoHere = document.getElementById("infoHere");
-let roundChoice = 0;
+let round = 0;
 let round1 = 1;
 let round3 = 3;
 let round7 = 7;
@@ -99,10 +99,16 @@ function createRockBtnCPU() {
         playerDecision = "Rock";
         if (computerPlay === playerDecision) {
             resultDisplay.innerText = "This round is a tie"
+            madeChoices.push("Tie game!")
+            winListMaker();
         } else if (computerPlay === "Scissors" || computerPlay === "Lizard") {
             resultDisplay.innerText = "You won this round!"
+            madeChoices.push("Player")
+            winListMaker();
         } else {
             resultDisplay.innerText = "You lost this round!"
+            madeChoices.push("CPU")
+            winListMaker();
         }
         getComputerDecision();
     });
@@ -117,10 +123,16 @@ function createPaperBtnCPU() {
         playerDecision = "Paper";
         if (computerPlay === playerDecision) {
             resultDisplay.innerText = "This round is a tie"
+            madeChoices.push("Tie game!")
+            winListMaker();
         } else if (computerPlay === "Rock" || computerPlay === "Spock") {
             resultDisplay.innerText = "You won this round!"
+            madeChoices.push("Player");
+            winListMaker();
         } else {
             resultDisplay.innerText = "You lost this round!"
+            madeChoices.push("CPU")
+            winListMaker();
         }
         getComputerDecision();
     });
@@ -135,10 +147,16 @@ function createScissorsBtnCPU() {
         playerDecision = "Scissors";
         if (computerPlay === playerDecision) {
             resultDisplay.innerText = "This round is a tie"
+            madeChoices.push("Tie game!")
+            winListMaker();
         } else if (computerPlay === "Paper" || computerPlay === "Lizard") {
             resultDisplay.innerText = "You won this round!"
+            madeChoices.push("Player")
+            winListMaker();
         } else {
             resultDisplay.innerText = "You lost this round!"
+            madeChoices.push("CPU")
+            winListMaker();
         }
         getComputerDecision();
     });
@@ -152,10 +170,16 @@ function createLizardBtnCPU() {
         playerDecision = "Lizard";
         if (computerPlay === playerDecision) {
             resultDisplay.innerText = "This round is a tie"
+            madeChoices.push("Tie game!")
+            winListMaker();
         } else if (computerPlay === "Paper" || computerPlay === "Spock") {
             resultDisplay.innerText = "You won this round!"
+            madeChoices.push("Player")
+            winListMaker();
         } else {
             resultDisplay.innerText = "You lost this round!"
+            madeChoices.push("CPU")
+            winListMaker();
         }
         getComputerDecision();
     });
@@ -169,10 +193,16 @@ function createSpockBtnCPU() {
         playerDecision = "Spock";
         if (computerPlay === playerDecision) {
             resultDisplay.innerText = "This round is a tie"
+            madeChoices.push("Tie game!")
+            winListMaker();
         } else if (computerPlay === "Scissors" || computerPlay === "Rock") {
             resultDisplay.innerText = "You won this round!"
+            madeChoices.push("Player")
+            winListMaker();
         } else {
             resultDisplay.innerText = "You lost this round!"
+            madeChoices.push("CPU")
+            winListMaker();
         }
         getComputerDecision();
     });
@@ -348,21 +378,21 @@ function roundSystem(){
     round3Btn.innerText = "Best of 3";
     round7Btn.innerText = "Best of 7";
     round1Btn.addEventListener("click",function(){
-        roundChoice = 1;
+        round = 1;
         round1Btn.remove();
         round3Btn.remove();
         round7Btn.remove();
         onLoad();
     })
     round3Btn.addEventListener("click",function(){
-        roundChoice = 3;
+        round = 3;
         round1Btn.remove();
         round3Btn.remove();
         round7Btn.remove();
         onLoad();
     })
     round7Btn.addEventListener("click",function(){
-        roundChoice = 7;
+        round = 7;
         round1Btn.remove();
         round3Btn.remove();
         round7Btn.remove();
@@ -374,4 +404,13 @@ function roundSystem(){
     versionBtns.appendChild(column1);
     versionBtns.appendChild(column2);
     versionBtns.appendChild(column3);
+}
+function roundCompare(){
+    if(round == round1){
+
+    } else if(round == round3){
+
+    } else if(round == round7){
+
+    }
 }
